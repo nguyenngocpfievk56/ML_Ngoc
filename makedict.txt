@@ -1,0 +1,3 @@
+/usr/local/Cellar/mecab/0.996/libexec/mecab/mecab-dict-index -u lavida.dic -f utf-8 -t utf-8 lavida_dict.csv 
+
+userdic = /home/foo/bar/foo.dic,/home/foo/bar2/usr.dic,/home/foo/bar3/bar.dic
