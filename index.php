@@ -17,18 +17,33 @@
         $content = $_POST['content'];
         $nodes = $mecab->parseToNode($content);
     
+        $data = [];
+        $validForm = ['サ変接続', '一般', '固有名詞', '代名詞'];
+        $tmp = '';
         foreach ($nodes as $n)
         {
-            echo $n->getSurface() . "<br />";
-            echo $n->getFeature() . "<br />";
+            $features = $n->getFeature();
+            $features = explode(",", $features);
+            if ($features[0] === '名詞' && in_array($features[1], $validForm) && $features[6] !== '*') {
+                $data[] = $n->getSurface();
+                $tmp .= '<a href="#">' . $n->getSurface() . '</a>';
+            } else {
+                $tmp .= $n->getSurface();
+            }
         }
+
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+
+        echo $tmp;
     }
 ?>
     <div class="container">
         <form method="post" action="#">
             <div class="form-group">
                 <label for="exampleInputEmail1">Content</label>
-                <textarea class="form-control" rows="5" name="content" placeholder="Put text into here!"></textarea>
+                <textarea class="form-control" rows="5" name="content" placeholder="Put text into here!"><?php echo $content; ?></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
