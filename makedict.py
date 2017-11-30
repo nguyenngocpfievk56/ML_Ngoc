@@ -1,5 +1,6 @@
 # coding: utf-8
 import MeCab
+from language_detect import detect_language
 
 m = MeCab.Tagger()
 
@@ -32,5 +33,7 @@ fdict = open("dict.txt", "w")
 for item in lvdDict:
     if (item[1] > 1):
         # fdict.write("%s\t%d\n" % (item[0], item[1]))
-        fdict.write("%s\n" % (item[0]))
+        if (detect_language(item[0]) != 'und'):
+            print item[0]
+            fdict.write("%s\n" % (item[0]))
 fdict.close()
