@@ -29,7 +29,6 @@ import six
 def detect_language(text):
     translate_client = translate.Client()
     result = translate_client.detect_language(text)
-    print result
     return result['language']
 
 

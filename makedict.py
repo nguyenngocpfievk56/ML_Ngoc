@@ -26,14 +26,13 @@ for line in lines:
 
 
 lvdDict = sorted(lvdDict.items(), key=lambda x:x[1])
-# upthreshold = int(0.95 * len(lvdDict))
-# lvdDict =  lvdDict[0:upthreshold]
+threshold = 1
 
 fdict = open("dict.txt", "w")
 for item in lvdDict:
-    if (item[1] > 1):
-        # fdict.write("%s\t%d\n" % (item[0], item[1]))
+    if (item[1] > threshold):
         if (detect_language(item[0]) != 'und'):
             print item[0]
-            fdict.write("%s\n" % (item[0]))
+            fdict.write("%s\t%d\n" % (item[0], item[1]))
+            # fdict.write("%s\n" % (item[0]))
 fdict.close()

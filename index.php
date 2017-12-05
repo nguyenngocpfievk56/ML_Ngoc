@@ -18,7 +18,7 @@
         $nodes = $mecab->parseToNode($content);
     
         $data = [];
-        $validForm = ['サ変接続', '一般', '固有名詞', '代名詞'];
+        $validForm = ['一般', '固有名詞'];
         $tmp = '';
         foreach ($nodes as $n)
         {
