@@ -54,4 +54,4 @@ def translate_text(target, text):
     print result
 
 if __name__ == '__main__':
-    translate_text('vi','あたが好き')
+    print detect_language('i')

@@ -43,6 +43,7 @@ if ($result->num_rows > 0) {
         $data .= strip_tags($str) . "\n";
     }
     $myfile = fopen("alldata.txt", "w") or die("Unable to open file!");
+    $data = strtolower($data);
     fwrite($myfile, $data);
     fclose($myfile);
 } else {
