@@ -14,10 +14,11 @@
 <?php
     if (isset($_POST['content'])) {
         $mecab = new MeCab_Tagger();
-        $content = $_POST['content'];
+        $content = strtolower($_POST['content']);
         $nodes = $mecab->parseToNode($content);
     
         $data = [];
+        // $validForm = ['一般', 'サ変接続', '固有名詞'];
         $validForm = ['一般', '固有名詞'];
         $tmp = '';
         foreach ($nodes as $n)

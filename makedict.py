@@ -34,6 +34,6 @@ for item in lvdDict:
         language = detect_language(item[0])
         if ((language == 'en' and len(item[0]) > 1) or (language == 'ja' and len(item[0]) > 3)):
             print item[0]
-            fdict.write("%s\t%d\n" % (item[0], item[1]))
-            # fdict.write("%s\n" % (item[0]))
+            # fdict.write("%s\t%d\n" % (item[0], item[1]))
+            fdict.write("%s\n" % (item[0]))
 fdict.close()
